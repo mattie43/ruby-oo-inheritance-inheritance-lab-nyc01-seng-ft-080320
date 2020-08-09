@@ -3,6 +3,7 @@
 require_relative "../lib/user.rb"
 require_relative "../lib/teacher.rb"
 require_relative "../lib/student.rb"
+require 'pry'
 
 steve = Student.new
 steve.first_name = "Steve"
@@ -12,9 +13,24 @@ avi = Teacher.new
 avi.first_name = "Avi"
 avi.last_name = "Flombaum"
 
+jim = User.new
+jim.first_name = "Jimmy"
+jim.last_name = "John"
 
-some_knowledge = avi.teach 
+matt = Student.new
+matt.first_name = "Matt"
+matt.last_name = "Ericksen"
 
-steve.learn(some_knowledge)
+# jim.learn ## NoMethodError: undefined method `learn'
+# just a user, no access to Student class
 
-puts "Steve just learned this important knowledge: '#{steve.knowledge.first}' from Avi"
+5.times do
+    steve.learn(avi.teach)
+    matt.learn(avi.teach)
+end
+
+puts "Matt knows #{matt.knowledge}"
+puts "Steve knows #{steve.knowledge}"
+# puts "Steve just learned this important knowledge: '#{steve.knowledge.first}' from Avi"
+
+# binding.pry

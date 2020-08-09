@@ -7,5 +7,6 @@ class Student < User
 
     def learn(str)
         self.knowledge << str
+        self.knowledge.uniq!
     end
 end
